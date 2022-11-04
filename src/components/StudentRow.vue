@@ -26,7 +26,9 @@ onMounted(() => {
         <img v-if="fotoUrl" src="" alt="">
         <div>
             <h2>{{ name }} {{ surname }}</h2>
-            <h3><a :href="store.repoLink">{{ store.user }}/{{ store.repo }}</a></h3>
+            <h3><a :href="store.repoLink" target="_blank" rel="noopener noreferrer">
+                    {{ store.user }}/{{ store.repo }}
+                </a></h3>
         </div>
         <div class="commits">
             <Commits :commits="store.commits" :closed="isClosed"></Commits>
@@ -36,7 +38,8 @@ onMounted(() => {
                 {{ mark }}
             </div>
             <div>
-                <h3><a :href="store.sandboxLink">G</a></h3>
+                <h3><a :href="store.codeLink" target="_blank" rel="noopener noreferrer">Code</a></h3>
+                <h3><a :href="store.previewLink" target="_blank" rel="noopener noreferrer">Preview</a></h3>
             </div>
         </div>
     </div>

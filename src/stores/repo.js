@@ -14,7 +14,8 @@ export const useRepoStore = defineStore('repoStore', () => {
   const repo = ref('grimoire');
   const commits = ref([]);
   const repoLink = computed(() => "https://github.com/" + user.value + "/" + repo.value)
-  const sandboxLink = computed(() => "https://github.dev/" + user.value + "/" + repo.value)
+  const codeLink = computed(() => "https://github.dev/" + user.value + "/" + repo.value)
+  const previewLink = computed(() => "https://htmlpreview.github.io/?https://github.com/" + user.value + "/" + repo.value + "/blob/main/index.html")
 
   if (localStorage.getItem('user')) {
     user.value = JSON.parse(localStorage.getItem('user'))
@@ -36,5 +37,5 @@ export const useRepoStore = defineStore('repoStore', () => {
       .then((data) => data.map((commitObj) => ({ url: commitObj.html_url, message: commitObj.commit.message, date: commitObj.commit.author.date })))
   }
 
-  return { user, repo, commits, repoLink, sandboxLink, getCommits }
+  return { user, repo, commits, repoLink, codeLink, previewLink, getCommits }
 })
