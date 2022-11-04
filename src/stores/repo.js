@@ -14,8 +14,11 @@ export const useRepoStore = defineStore('repoStore', () => {
   const repo = ref('grimoire');
   const commits = ref([]);
   const repoLink = computed(() => "https://github.com/" + user.value + "/" + repo.value)
-  const codeLink = computed(() => "https://github.dev/" + user.value + "/" + repo.value)
-  const previewLink = computed(() => "https://htmlpreview.github.io/?https://github.com/" + user.value + "/" + repo.value + "/blob/main/index.html")
+
+  const vsLink = computed(() => "https://github.dev/" + user.value + "/" + repo.value)
+  const codesandboxLink = computed(() => "https://codesandbox.io/s/github/" + user.value + "/" + repo.value)
+  const htmlpreviewLink = computed(() => "https://htmlpreview.github.io/?https://github.com/" + user.value + "/" + repo.value + "/blob/main/index.html")
+  const booleanLink = computed(() => "https://flynn.boolean.careers/montessori-v2/code/github/" + user.value + "/" + repo.value)
 
   if (localStorage.getItem('user')) {
     user.value = JSON.parse(localStorage.getItem('user'))
@@ -37,5 +40,5 @@ export const useRepoStore = defineStore('repoStore', () => {
       .then((data) => data.map((commitObj) => ({ url: commitObj.html_url, message: commitObj.commit.message, date: commitObj.commit.author.date })))
   }
 
-  return { user, repo, commits, repoLink, codeLink, previewLink, getCommits }
+  return { user, repo, commits, repoLink, vsLink, codesandboxLink, htmlpreviewLink, htmlpreviewLink, booleanLink, getCommits }
 })
