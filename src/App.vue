@@ -1,10 +1,8 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import StudentRow from './components/StudentRow.vue';
 
-import { useRepoStore } from './stores/repo'
-
-const store = useRepoStore()
+const index = 1;
 </script>
 
 <template>
@@ -12,17 +10,10 @@ const store = useRepoStore()
     <HelloWorld />
   </header>
   <main>
-    <h1>{{ store.repo }}@{{ store.user }}</h1>
-    <p v-for="commit of store.commits"> <a :href="commit?.url" target="_blank" rel="noopener noreferrer">{{
-        commit?.message + " - " + commit?.date
-    }}</a>
-    </p>
+    <StudentRow name="Mattia" surname="Folcarelli" :num="index" fotoUrl="" mark=3 />
   </main>
 </template>
 
 <style scoped>
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+
 </style>
